@@ -20,11 +20,9 @@ const fetchKid = async (req, res) => {
 const createKid = async (req, res) => {
     // Get the sent in data off request body
     const name = req.body.name;
-    const parentName = req.body.parentName;
     // Create a kid with it
     const kid = await Kid.create({
         name: name,
-        parentName: parentName,
     });
 
     // respond with the new kid
@@ -36,11 +34,9 @@ const updateKid = async(req, res) => {
     const kidId = req.params.id;
     // Get the data off the req body
     const name = req.body.name;
-    const parentName = req.body.parentName;
     // Find and update
      await Kid.findByIdAndUpdate(kidId,{
         name: name,
-        parentName: parentName
     })
     // Find update kid
     const kid = await Kid.findById(kidId)
